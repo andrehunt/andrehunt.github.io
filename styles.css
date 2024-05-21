@@ -1,11 +1,88 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Consolas', monospace;
     background-color: #000;
     color: #fff;
+    overflow: hidden; /* Hide scrollbars until loading is complete */
 }
 
+/* Navigation Bar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    animation: fadeInDown 1s forwards;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.logo {
+    font-size: 1.5em;
+    color: #ff4d4d;
+    text-shadow: 0 0 2px #ff4d4d, 0 0 2px #ff4d4d, 0 0 2px #ff4d4d;
+}
+
+.menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    animation: fadeInRight 1s forwards;
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.menu li {
+    margin-right: 20px;
+}
+
+.menu li:last-child {
+    margin-right: 0;
+}
+
+.menu li a {
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: color 0.3s;
+    color: #fff;
+    text-shadow: 0 0 2px #fff, 0 0 2px #fff, 0 0 2px #fff;
+}
+
+.menu li a:hover {
+    color: #ff4d4d;
+}
+
+/* Hero Section */
 .hero {
     position: relative;
     height: 100vh;
@@ -43,6 +120,12 @@ body {
     }
 }
 
+.hero-content h1,
+.hero-content p,
+.btn {
+    text-shadow: 0 0 2px #fff, 0 0 2px #fff, 0 0 2px #fff;
+}
+
 .hero-content h1 {
     font-size: 3.5em;
     margin-bottom: 20px;
@@ -69,6 +152,7 @@ body {
     background-color: #cc0000;
 }
 
+/* Projects Section */
 .projects {
     padding: 50px 0;
     text-align: center;
@@ -100,5 +184,107 @@ body {
 
 .project-item h3 {
     margin-top: 20px;
-    font-size: 1.5em;
+}
+
+/* Loading Screen */
+.loading-screen {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 20px;
+    background-color: #000;
+    color: #fff;
+    font-family: 'Consolas', monospace;
+    font-size: 12px;
+    z-index: 9999;
+}
+
+.terminal {
+    max-width: 100%; /* Ensure terminal spans full width */
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* Styles for Terminal Input Area */
+.terminal-input {
+    position: absolute;
+    top: calc(100% - 30px); /* Adjust top position as needed */
+    right: 10px; /* Adjust right position as needed */
+    display: flex;
+    align-items: center;
+    color: #FFF; /* Text color */
+    font-family: 'Consolas', monospace;
+}
+
+.prompt {
+    position: absolute;
+    top: 5;
+    left: 18px; /* Adjust left position as needed */
+    color: #00FF00; /* Green color for prompt */
+    margin-right: 5px; /* Space between the prompt and input */
+}
+
+#user-input {
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    outline: none;
+    width: auto; /* Adjust width to fit content */
+    caret-color: #00FF00; /* Green color for caret */
+    margin-left: 5px; /* Add margin to the left for separation */
+    margin-top: -18px; /* Add margin to move it down */
+}
+
+.line {
+    margin: 5px 0;
+    animation: typing 0.25s steps(100, end) forwards, blink 0.5s infinite;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink {
+    0%, 50% { border-right: 2px solid #fff; }
+    51%, 100% { border-right: 0; }
+}
+
+/* Hide main content initially */
+.navbar,
+.hero,
+.projects,
+.footer {
+    display: none;
+}
+
+/* Main Content Animation */
+.hero-content {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.hero-content {
+    animation: fadeIn 1s forwards;
+}
+
+.navbar, .projects, .footer {
+    animation: fadeIn 1s forwards 0.5s; /* Delayed animation */
 }
