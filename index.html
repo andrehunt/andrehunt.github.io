@@ -5,11 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Portfolio</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Consolas&display=swap" rel="stylesheet">
 </head>
 <body>
 
+<!-- Loading Screen -->
+<div class="loading-screen">
+    <div class="terminal">
+        <p class="line" id="launching-line"></p>
+        <div class="terminal-input">
+            <input type="text" id="user-input" placeholder="Type 'Start' and hit Enter">
+            <span class="prompt">$</span>
+        </div>
+    </div>
+</div>
+
+<!-- Navigation Bar -->
+<nav class="navbar">
+    <div class="container">
+        <div class="logo">My Portfolio</div>
+        <ul class="menu">
+            <li><a href="#logs">Logs</a></li>
+            <li><a href="#creations">Creations</a></li>
+            <li><a href="#network">Network</a></li>
+        </ul>
+    </div>
+</nav>
+
 <!-- Hero Section -->
-<section class="hero">
+<section id="home" class="hero">
     <div class="overlay"></div>
     <div class="hero-content">
         <h1>Welcome to My Portfolio</h1>
@@ -19,20 +43,14 @@
 </section>
 
 <!-- Projects Section -->
-<section class="projects">
-    <div class="project-item">
-        <img src="https://source.unsplash.com/random/400x300" alt="Project 1">
-        <h3>Project 1</h3>
-    </div>
-    <div class="project-item">
-        <img src="https://source.unsplash.com/random/400x300" alt="Project 2">
-        <h3>Project 2</h3>
-    </div>
-    <div class="project-item">
-        <img src="https://source.unsplash.com/random/400x300" alt="Project 3">
-        <h3>Project 3</h3>
-    </div>
+<section id="creations" class="projects">
+    <!-- Project items will go here -->
 </section>
+
+<!-- Footer -->
+<footer id="network" class="footer">
+    <!-- Social links will go here -->
+</footer>
 
 <script src="script.js"></script>
 </body>
