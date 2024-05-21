@@ -219,7 +219,7 @@ body {
 .prompt {
     position: absolute;
     top: 5;
-    left: 18px; /* Adjust left position as needed */
+    left: 20px; /* Adjust left position as needed */
     color: #00FF00; /* Green color for prompt */
     margin-right: 5px; /* Space between the prompt and input */
 }
