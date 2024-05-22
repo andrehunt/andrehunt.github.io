@@ -11,46 +11,68 @@
 
 <!-- Loading Screen -->
 <div class="loading-screen">
+    <div class="ascii-logo">
+        <!-- Your ASCII art logo goes here -->
+        <pre>
+ .S_SSSs           .S    S.   
+.SS~SSSSS         .SS    SS.  
+S%S   SSSS        S%S    S%S  
+S%S    S%S        S%S    S%S  
+S%S SSSS%S        S%S SSSS%S  
+S&S  SSS%S        S&S  SSS&S  
+S&S    S&S        S&S    S&S  
+S&S    S&S        S&S    S&S  
+S*S    S&S        S*S    S*S  
+S*S    S*S        S*S    S*S  
+S*S    S*S        S*S    S*S  
+SSS    S*S        SSS    S*S  
+       SP    %S          SP   
+       Y     S%          Y    
+        </pre>
+    </div>
     <div class="terminal">
         <p class="line" id="launching-line"></p>
-        <div class="terminal-input">
-            <input type="text" id="user-input" placeholder="Type 'Start' and hit Enter">
-            <span class="prompt">$</span>
-        </div>
+        <div class="terminal-input"></div>
     </div>
 </div>
 
 <!-- Navigation Bar -->
 <nav class="navbar">
     <div class="container">
-        <div class="logo">My Portfolio</div>
+        <div class="logo"></div>
         <ul class="menu">
-            <li><a href="#logs">Logs</a></li>
-            <li><a href="#creations">Creations</a></li>
-            <li><a href="#network">Network</a></li>
+            <li><a href="logs.html">Logs</a></li>
+            <li><a href="creations.html">Creations</a></li> <!-- Updated href attribute -->
+            <li><a href="network.html">Network</a></li>
         </ul>
     </div>
 </nav>
+
 
 <!-- Hero Section -->
 <section id="home" class="hero">
     <div class="overlay"></div>
     <div class="hero-content">
-        <h1>Welcome to My Portfolio</h1>
-        <p>Explore my work and get in touch!</p>
-        <button class="btn">View Projects</button>
+        <pre class="ascii-art" id="ascii-art">
+    ‫
+   .S_SSSs     .S_sSSs     .S_sSSs     .S_sSSs      sSSs         .S    S.    .S       S.    .S_sSSs    sdSS_SSSSSSbs  
+  .SS~SSSSS   .SS~YS%%b   .SS~YS%%b   .SS~YS%%b    d%%SP        .SS    SS.  .SS       SS.  .SS~YS%%b   YSSS~S%SSSSSP  
+  S%S   SSSS  S%S   `S%b  S%S   `S%b  S%S   `S%b  d%S'          S%S    S%S  S%S       S%S  S%S   `S%b       S%S       
+  S%S    S%S  S%S    S%S  S%S    S%S  S%S    S%S  S%S           S%S    S%S  S%S       S%S  S%S    S%S       S%S       
+  S%S SSSS%S  S%S    S&S  S%S    S&S  S%S    d*S  S&S           S%S SSSS%S  S&S       S&S  S%S    S&S       S&S       
+  S&S  SSS%S  S&S    S&S  S&S    S&S  S&S   .S*S  S&S_Ss        S&S  SSS&S  S&S       S&S  S&S    S&S       S&S       
+  S&S    S&S  S&S    S&S  S&S    S&S  S&S_sdSSS   S&S~SP        S&S    S&S  S&S       S&S  S&S    S&S       S&S       
+  S&S    S&S  S&S    S&S  S&S    S&S  S&S~YSY%b   S&S           S&S    S&S  S&S       S&S  S&S    S&S       S&S       
+  S*S    S&S  S*S    S*S  S*S    d*S  S*S   `S%b  S*b           S*S    S*S  S*b       d*S  S*S    S*S       S*S       
+  S*S    S*S  S*S    S*S  S*S   .S*S  S*S    S%S  S*S.          S*S    S*S  S*S.     .S*S  S*S    S*S       S*S       
+  S*S    S*S  S*S    S*S  S*S_sdSSS   S*S    S&S   SSSbs        S*S    S*S   SSSbs_sdSSS   S*S    S*S       S*S       
+  SSS    S*S  S*S    SSS  SSS~YSSY    S*S    SSS    YSSP        SSS    S*S    YSSP~YSSY    S*S    SSS       S*S       
+         SP   SP                      SP                               SP                  SP               SP        
+Y    Y                       Y                                Y                   Y                Y         
+</pre>
+        <p style="font-size: 12px;">Exploring Cyber Security with passion and purpose.</p>
     </div>
 </section>
-
-<!-- Projects Section -->
-<section id="creations" class="projects">
-    <!-- Project items will go here -->
-</section>
-
-<!-- Footer -->
-<footer id="network" class="footer">
-    <!-- Social links will go here -->
-</footer>
 
 <script src="script.js"></script>
 </body>
