@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Check if the script should run based on the current page
-    if (window.location.pathname.includes('index.html')) {
+    if (window.location.pathname.includes('home.html')) {
         // Typing animation for the loading screen
         const terminal = document.querySelector('.terminal');
         const startText = "Start";
@@ -91,14 +91,14 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         
             // Print lines with random delays and 5% of characters in each line being red
-            lines.forEach((line, index) => {
+            lines.forEach((line, home) => {
                 const randomDelay = Math.random() * 15 + 100; // Random delay between 100ms and 150ms
                 setTimeout(() => {
                     printTextWithRedCharacters(line);
-                    if (index === lines.length - 1) { // Show the initialized screen after printing all lines
+                    if (home === lines.length - 1) { // Show the initialized screen after printing all lines
                         showInitializedScreen();
                     }
-                }, index * randomDelay);
+                }, home * randomDelay);
             });
         }
 
@@ -180,7 +180,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    // If it's not the index page, simply load the website
+    // If it's not the home page, simply load the website
     else {
         loadWebsite();
     }
