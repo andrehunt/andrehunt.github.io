@@ -2,13 +2,47 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0;url=home.html">
     <title>Redirecting...</title>
+    <style>
+        body {
+            background-color: #000;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #000; /* Text color */
+            font-family: Arial, sans-serif;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #ff0000;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, opacity 0.5s; /* Added opacity transition */
+            opacity: 0; /* Initially hidden */
+            animation: fadeIn 7s ease-out 2s forwards; /* Fade in after 5 seconds */
+            font-weight: bold; /* Make the text bold */
+        }
+        button:hover {
+            background-color: #ffffff;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
 </head>
 <body>
-    <p>If you are not redirected automatically, <a href="home.html">click here</a>.</p>
+    <button onclick="redirectToHome()">If automatic redirection doesn't occur, click here</button>
     <script>
-        window.location.href = "home.html"; // In case the redirection doesn't work
+        function redirectToHome() {
+            window.location.href = "home.html";
+        }
     </script>
 </body>
 </html>
