@@ -8,8 +8,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Consolas&display=swap" rel="stylesheet">
     <title>Redirecting...</title>
     <script>
-        if (window.location.pathname !== "/index.html") {
-            window.location.href = "./index.html";
+        // Check if redirection has already occurred
+        if (!localStorage.getItem('redirected')) {
+            // Set a flag to indicate redirection
+            localStorage.setItem('redirected', 'true');
+            // Redirect to index.html
+            window.location.href = './index.html';
         }
     </script>
 </head>
