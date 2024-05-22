@@ -8,7 +8,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Consolas&display=swap" rel="stylesheet">
     <title>Redirecting...</title>
     <script>
-        window.location.href = "./index.html";
+        if (window.location.pathname !== "/index.html") {
+            window.location.href = "./index.html";
+        }
     </script>
 </head>
 <body>
