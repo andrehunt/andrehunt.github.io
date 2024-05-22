@@ -40,7 +40,6 @@ body {
 .logo {
     font-size: 1.5em;
     color: #ff4d4d;
-    text-shadow: 0 0 2px #ff4d4d, 0 0 2px #ff4d4d, 0 0 2px #ff4d4d;
 }
 
 .menu {
@@ -73,13 +72,13 @@ body {
 .menu li a {
     text-decoration: none;
     font-size: 1.2em;
-    transition: color 0.3s;
+    transition: color 0.3s, text-shadow 0.3s;
     color: #fff;
-    text-shadow: 0 0 2px #fff, 0 0 2px #fff, 0 0 2px #fff;
 }
 
 .menu li a:hover {
     color: #ff4d4d;
+    text-shadow: 0 0 2px #ff4d4d, 0 0 2px #ff4d4d, 0 0 2px #ff4d4d;
 }
 
 /* Hero Section */
@@ -120,11 +119,15 @@ body {
     }
 }
 
-.hero-content h1,
-.hero-content p,
-.btn {
-    text-shadow: 0 0 2px #fff, 0 0 2px #fff, 0 0 2px #fff;
+section.hero .tagline {
+    font-size: 19px; /* Adjust the font size as needed */
 }
+
+/* Show navbar on the creations page */
+.navbar-creations {
+    display: flex !important;
+}
+
 
 .hero-content h1 {
     font-size: 3.5em;
@@ -219,7 +222,7 @@ body {
 .prompt {
     position: absolute;
     top: 5;
-    left: 23px; /* Adjust left position as needed */
+    left: 18px; /* Adjust left position as needed */
     color: #00FF00; /* Green color for prompt */
     margin-right: 5px; /* Space between the prompt and input */
 }
@@ -287,4 +290,50 @@ body {
 
 .navbar, .projects, .footer {
     animation: fadeIn 1s forwards 0.5s; /* Delayed animation */
+}
+
+.ascii-art {
+    font-family: 'Consolas', monospace;
+    font-size: 1em;
+    color: #ffffff;
+    white-space: pre;
+    text-align: center;
+    line-height: 1.2; /* Adjust line height to improve alignment */
+    text-indent: 4.5em; /* Adjust the indentation as needed */
+}
+
+.ascii-line {
+    display: block;
+}
+
+.red-char {
+    color: red; /* Ensure glitched characters remain red */
+}
+
+/* Adjust position for the misaligned 'Y' characters */
+.misaligned-y {
+    position: relative;
+    top: -3px; /* Adjust this value as needed to align the 'Y' characters */
+}
+
+
+@keyframes glitch {
+    0% {
+        transform: translate(0);
+    }
+    20% {
+        transform: translate(-2px, -2px);
+    }
+    40% {
+        transform: translate(2px, 2px);
+    }
+    60% {
+        transform: translate(-2px, 2px);
+    }
+    80% {
+        transform: translate(2px, -2px);
+    }
+    100% {
+        transform: translate(0);
+    }
 }
