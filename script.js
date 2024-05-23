@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Check if the script should run based on the current page
-    if (window.location.pathname.includes('home.html')) {
+    if (window.location.pathname.includes('home')) {
         // Typing animation for the loading screen
         const terminal = document.querySelector('.terminal');
         const startText = "Start";
