@@ -40,15 +40,53 @@
             color: #ff4d4d;
         }
 
+        .menu li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
         /* Style for the Network link */
         .menu li.network a {
-            color: #ff4d4d;
+            color: #ff0000;
             text-shadow: 0 0 2px #ff4d4d, 0 0 2px #ff4d4d, 0 0 2px #ff4d4d;
+        }
+
+        .directory {
+            padding: 250px;
+            margin-top: 50px; /* Add margin to move the directory down */
+        }
+
+        .directory h1 {
+            color: #ff0000;
+            text-shadow: 0 0 2px #ff4d4d, 0 0 2px #ff4d4d, 0 0 2px #ff4d4d;
+        }
+
+        .directory table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .directory th, .directory td {
+            padding: 10px;
+            border: 1px solid #fff;
+            text-align: left;
+        }
+
+        .directory th {
+            color: #ff0000;
+        }
+
+        .directory a {
+            color: #ff0000;
+            text-decoration: none;
+        }
+
+        .directory a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-
 <!-- Navigation Bar -->
 <nav class="navbar navbar-creations">
     <ul class="menu">
@@ -58,5 +96,40 @@
         <li class="network"><a href="network.html">Network</a></li>
     </ul>
 </nav>
+
+<!-- Directory Listing -->
+<div class="directory">
+    <h1>Index of /Network</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><a href="https://github.com/andrehunt/" target="_blank">Github/</a></td>
+            </tr>
+            <tr>
+                <td><a href="https://www.linkedin.com/in/andrehunt/" target="_blank">LinkedIn/</a></td>
+            </tr>
+            <tr>
+                <td>.../</td>
+            </tr>
+            <tr>
+                <td>.../</td>
+            </tr>
+            <tr>
+                <td>.../</td>
+            </tr>
+            <tr>
+                <td>.../</td>
+            </tr>
+            <tr>
+                <td>.../</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>
