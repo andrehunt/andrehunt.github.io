@@ -214,7 +214,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 const charElement = document.createElement('span'); // Create a span for each character
                 charElement.textContent = char;
 
-                if (char !== ' ' && Math.random() < 0.02) { // 5% chance of character being red
+                if (char !== ' ' && Math.random() < 0.05) { // 5% chance of character being red
                     charElement.classList.add('red-char');
                 }
 
