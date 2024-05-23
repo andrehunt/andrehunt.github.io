@@ -40,15 +40,53 @@
             color: #ff4d4d;
         }
 
+        .menu li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
         /* Style for the Logs link */
         .menu li.logs a {
-            color: #ff4d4d;
+            color: #ff0000;
             text-shadow: 0 0 2px #ff4d4d, 0 0 2px #ff4d4d, 0 0 2px #ff4d4d;
+        }
+
+        .directory {
+            padding: 250px;
+            margin-top: 50px; /* Add margin to move the directory down */
+        }
+
+        .directory h1 {
+            color: #ff0000;
+            text-shadow: 0 0 2px #ff4d4d, 0 0 2px #ff4d4d, 0 0 2px #ff4d4d;
+        }
+
+        .directory table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .directory th, .directory td {
+            padding: 10px;
+            border: 1px solid #fff;
+            text-align: left;
+        }
+
+        .directory th {
+            color: #ff0000;
+        }
+
+        .directory a {
+            color: #ff0000;
+            text-decoration: none;
+        }
+
+        .directory a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-
 <!-- Navigation Bar -->
 <nav class="navbar navbar-creations">
     <ul class="menu">
@@ -58,5 +96,56 @@
         <li><a href="network.html">Network</a></li>
     </ul>
 </nav>
+
+<!-- Directory Listing -->
+<div class="directory">
+    <h1>Index of /Logs</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Category</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><a href="cloudtpot.html" target="_blank">Google_Cloud_Honeypot_Guide/</a></td>
+                <td>22-Jan-2024</td>
+                <td>Guide</td>
+            </tr>
+            <tr>
+                <td>.../</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>.../</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>.../</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>.../</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>.../</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>.../</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>
