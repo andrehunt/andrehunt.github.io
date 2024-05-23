@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Run a TPOT Honeypot on Google Cloud</title>
+    <link href="https://fonts.googleapis.com/css2?family=Consolas&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Consolas', monospace;
+            background-color: #000;
+            color: #fff;
+        }
+
+        h1, h2, h3 {
+            color: #ff4d4d;
+            text-shadow: 0 0 1px #ff4d4d, 0 0 1px #ff4d4d, 0 0 1px #ff4d4d;
+        }
+        h1 {
+            text-align: center;
+            font-size: 3.5em; /* Enlarge the font size */
+        }
+        a {
+            color: #ff4d4d;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        pre {
+            background-color: #333;
+            padding: 10px;
+            overflow: auto;
+        }
+
+        code {
+            color: #ff4d4d;
+        }
+    </style>
+</head>
+<body>
+    <h1>TPOT Honeypot on Google Cloud</h1>
+
+    <h2>Introduction</h2>
+    <p>Lets dive into Google Cloud and share how you can set up the well-known "TPOT" Honeypot virtually on the cloud.</p>
+
+    <p>Did I mention it's free?</p>
+    <p>You can do this at absolutely no cost, leveraging Google Cloud's 90-day free trial period. You receive $300 in credit, more than sufficient to cover not only this honeypot but also any other projects you're keen to try out.</p>
+
+    <p>As I delved into this project, I quickly realized the lack of updated documentation, especially in the cloud context. I took it upon myself to create a guide that's as simple and beginner-friendly as possible. I'll walk you through the setup, configuration, and explore the features and how the captured data could be utilized.</p>
+
+    <p>Before we start, let's understand what a honeypot is:</p>
+
+    <h2>What is a Honeypot?</h2>
+    <p>A honeypot is a cybersecurity mechanism designed to lure and trap potential attackers or unauthorized users. It operates as a decoy system, mimicking vulnerabilities to attract malicious activity. Cybersecurity professionals gain valuable insights into attack patterns, tactics, and potential vulnerabilities by monitoring the honeypot.</p>
+    <ul>
+        <li><strong>Decoy System:</strong> A honeypot mimics vulnerabilities to attract potential attackers.</li>
+        <li><strong>Threat Insight:</strong> It provides valuable data on attack patterns and tactics.</li>
+        <li><strong>Enhanced Security:</strong> Honeypots contribute to strengthening overall cybersecurity measures.</li>
+    </ul>
+
+    <h2>What is TPOT?</h2>
+    <p>TPOT, the "Threat Pot," goes beyond mere emulation—it's a dynamic cybersecurity framework designed to mimic various services and vulnerabilities, ensuring a proactive defense against potential threats.</p>
+    <ul>
+        <li><strong>Versatility:</strong> TPOT is engineered to replicate a broad spectrum of services and vulnerabilities, ensuring comprehensive threat detection.</li>
+        <li><strong>Adaptive Defense:</strong> Leveraging Docker technology, TPOT maximizes data collection by deploying multiple honeypots efficiently. This adaptive defense strategy enhances the scope and efficiency of threat detection.</li>
+        <li><strong>Insightful Analysis:</strong> TPOT offers a profound understanding of cyber threats, empowering users with the insights needed for proactive risk mitigation.</li>
+    </ul>
+
+    <p>No more chatter—here's the step-by-step guide. If you prefer a video format, please bear with me as I'm currently working on it.</p>
+
+    <h2>Guide</h2>
+    <p><strong>The GitHub Repository:</strong></p>
+    <p><a href="https://github.com/telekom-security/tpotce" target="_blank">https://github.com/telekom-security/tpotce</a></p>
+
+    <h3>Creating a Google Account</h3>
+    <ul>
+        <li>Visit <a href="https://console.cloud.google.com/freetrial" target="_blank">https://console.cloud.google.com/freetrial</a></li>
+        <li>You will need a Google account to sign in with and then you can receive $300 Credit for 90 days.</li>
+        <li>You will need to verify you are human by entering accurate personal details such as billing address and credit card information for verification (You'll incur a $1 charge, swiftly refunded—standard practice in cloud services to deter automated bots.)</li>
+    </ul>
+
+    <h3>Enabling Compute Engine API</h3>
+    <ul>
+        <li>Once you have your free trial enabled you will need to enable the Compute Engine API to create VM instances.</li>
+        <li>You can enable this by using the search bar and searching for "Compute Engine API", or try creating a VM Instance and it will redirect you to enabling it first. You can do this by going to the left context menu and going to "Compute Engine" > "VM Instance", where you can click "Create Instance".</li>
+    </ul>
+
+    <h3>Creating the VM Instance</h3>
+    <ul>
+        <li>Name your instance</li>
+        <li>Select a nearby region</li>
+        <li>Now you can pick between the e2-standard-2 option or the e2-standard-4 option, the first option is the minimum requirements for it to run.
+            <ul>
+                <li>e2-standard-4 gives it a little more computing power to prevent any issues in the future, this is still an affordable option using the trial credits.</li>
+            </ul>
+        </li>
+        <li>Select E2</li>
+        <li>Below you will find a selection box where you can select either "Shared core, Standard, High Memory and High CPU", we are going to use the Standard e2-standard-4, you could also use e2-standard-2.</li>
+        <li>Scroll down to "Boot Disk", here we can select "Debian 11 (Bullseye)"</li>
+        <li>Make sure to edit the size and change it from 10GB to 80GB-120GB</li>
+        <li>Scrolling down to "Firewall" enable "Allow HTTP Traffic" and "Allow HTTPS Traffic"</li>
+        <li>Create the instance</li>
+        <li>Wait about 5-10 minutes for it to properly boot up</li>
+    </ul>
+
+    <h3>Setting the Firewall</h3>
+    <ul>
+        <li>Going to the search bar and searching for "Firewall" heading to the VPC Network Firewall</li>
+        <li>Select "Create Firewall Rule" so as not to be mistaken for "Create Firewall Policy".</li>
+        <li>Name the rule (ex; tpot-firewall)</li>
+        <li>Turning off logs will help save disk usage, I recommend this</li>
+        <li>Now in the "Targets" drop-down select "All instances in the network".</li>
+        <li>Make sure the Source Filter is on "IPv4 ranges"</li>
+        <li>In the "Source IPv4 ranges" input box, enter "0.0.0.0/0"</li>
+        <li>Under "Protocols and ports" select "Allow all"</li>
+        <li>Create</li>
+    </ul>
+
+    <h3>Connecting via SSH</h3>
+    <ul>
+        <li>Head back to the instances page</li>
+        <li>In Google Cloud we can easily use the browser to connect via the SSH button in the instances menu.</li>
+    </ul>
+
+    <h3>Setup</h3>
+    <ul>
+        <li>Once you are connected start by updating the system:
+            <pre><code>sudo apt update -y && sudo apt upgrade -y</code></pre>
+        </li>
+        <li>Installing Git:
+            <pre><code>sudo apt install git -y</code></pre>
+        </li>
+        <li>Cloning the GitHub repository:
+            <pre><code>git clone https://github.com/telekom-security/tpotce</code></pre>
+        </li>
+        <li>Navigating to the installation directory:
+            <pre><code>cd tpotce/iso/installer/</code></pre>
+        </li>
+        <li>Starting the installation:
+            <pre><code>sudo ./install.sh --type=user</code></pre>
+        </li>
+        <li>When you are prompted with a Y/N to continue enter "Y"</li>
+        <li>You will now be asked which Edition of TPOT to install, I went with "Standard"</li>
+        <li>Create a username that you will remember (take note of this)</li>
+        <li>Create a secure password (take note of this)</li>
+        <li>The installation will now begin (This will take 5-10 minutes)</li>
+        <li>The SSH connection will shut down after an automatic reboot and be inaccessible via port 22.</li>
+    </ul>
+
+    <h3>Accessing the Web Interface</h3>
+    <ul>
+        <li>Visit the Instance External IP with port 64297 ex; (1.1.1.1:64297)</li>
+        <li>When shown a security warning, click "Advanced" and "Proceed"
+            <ul>
+                <li>The popup appears because our service uses a self-signed certificate, not authorized with a certificate authorization unit. No worries—your connection is secure, as it still uses an encrypted protocol.</li>
+            </ul>
+        </li>
+        <li>Enter the credentials you created for the user during setup</li>
+        <li>You are now displayed the dashboard of TPOT</li>
+        <li>TPOT has successfully been installed and is now running</li>
+    </ul>
+
+    <h3>Exploring TPOT</h3>
+    <p>You have now completed the setup and there are most likely already multiple attacks on your honeypots.</p>
+    <p>I will be covering what each feature does more in-depth in the video guide but let's cover some basics:</p>
+    <ul>
+        <li><strong>Attack Map:</strong> Shows a live representation of where attacks are coming from, it also includes other information like what type of connection was attempted and from which IP address.</li>
+        <li><strong>Cockpit:</strong> The centralized web-based admin panel. It provides a comprehensive view of the system overview, logs, storage, networking, accounts, services, applications, software updates, and a terminal for easy management.</li>
+        <li><strong>Cyberchef:</strong> A known web tool for easily decoding, encoding, and manipulating data used in cybersecurity.</li>
+        <li><strong>Kibana:</strong> Your visual dashboard for TPOT honeypot data. It shows you what each honeypot caught, including details on attacks, origins, and methods used.</li>
+    </ul>
+
+    <h2>Known Issues</h2>
+    <ul>
+        <li><strong>Inaccessible Dashboards:</strong>
+            <ul>
+                <li>On some installations, I found that after 30-40 minutes of setup, the dashboard and other services are down, but the VM Instance is still up. I haven't found the root cause of this problem but using the methods explained in this guide I haven't experienced it again</li>
+                <li>The only way I've gone around this is by recreating the VM and setting up the honeypot from the start, yes I know this could be annoying but it only takes 10-15 minutes. If you are using the e2-standard-2, try using e2-standard-4.</li>
+            </ul>
+        </li>
+        <li><strong>Cannot access Cockpit / No "tsec" user:</strong>
+            <ul>
+                <li>In the documentation of TPOT, there supposedly is a "tsec" user created which is used as an administrator account as of my knowledge, after trying different methods, I realized during cloud deployment, that this user doesn't even get created, and you can not create the user yourself. I couldn't find a way around this at first, but didn't give up, here is how I resolved this issue:</li>
+                <li>When you first created the VM Instance before installing TPOT, the user has root privileges, I am unsure of the default password but you can change it yourself using; <code>sudo passwd (username)</code> (Your username is the same as your email. If your email is "googleuser@gmail.com", your username would be "googleuser"). You can then use this username and password to access the Honeypot as an administrator, so you can use this to connect to Cockpit where you then have access to the terminal.</li>
+                <li>This fix only applies before installing TPOT as you can not SSH normally back in after TPOT is deployed. Or can you?</li>
+                <li>Before I explain this, I highly recommend just restarting the setup and changing the user password before installing TPOT as this is how I did it, and don't know what the security implications are while people are attacking the network constantly.</li>
+                <li>If you don't care, and just want access, There is still an SSH port that you can use. Using the method we first SSH'd into the machine from the "VM Instances" menu on Google Cloud, click the drop-down next to the SSH button ("Open SSH from the Browser on Custom Port"), here you can specify a specific port, and that port is "64295", you can now connect via SSH and change your user's password</li>
+                <li><strong>Please Note:</strong></li>
+                <li>Do not mistake this user with the one we created during TPOT setup, this is the user that Google Cloud has created for you, it is the same as your email, so if your email is googleuser@gmail.com, your username would be "googleuser".</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>Congratulations on successfully setting up TPOT Honeypot on Google Cloud!</p>
+    <p>Explore TPOT's features like the live Attack Map and Cockpit admin panel. Utilize Cyberchef for data manipulation and Kibana for visualizing TPOT honeypot data.</p>
+    <p>For any questions or challenges, feel free to reach out—I'm here to help.</p>
+</body>
+</html>
