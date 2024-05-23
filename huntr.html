@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Huntr</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<style>
+  body{background-color:#000;color:#fff;font-family:'Courier New',monospace;margin:0;padding:0}header{background-color:#000;color:#ff0000;text-align:center;padding:20px}.container{max-width:1200px;margin:0 auto;padding:40px}p{font-size:1.4em;line-height:1.6;margin-bottom:30px}a{color:#ff0000;text-decoration:none;transition:color 0.3s}a:hover{color:#ff4444}.logo-container{display:flex;align-items:center;flex-direction:column}.logo{width:600px;height:auto;margin-bottom:20px}.logo-subtitle{font-size:1.6em}.features{display:flex;justify-content:space-between;margin-top:40px}.feature{flex-basis:calc(33.33% - 40px);padding:15px;background-color:#ff0000;color:#fff;margin-bottom:20px;text-align:center;border-radius:10px;box-shadow:0px 0px 10px rgba(0,0,0,0.3);margin-right:40px;transition:background-color 0.3s,color 0.3s,transform 0.2s}.feature:last-child{margin-right:0}.feature:hover{background-color:#fff;color:#ff0000;transform:scale(1.05)}.feature:hover i{animation:icon-bounce 0.5s alternate infinite}.feature h2{font-size:1em;margin-bottom:10px}.feature p{font-size:1.2em;line-height:1.5}.feature i{font-size:4em;margin-bottom:10px}.cta{margin-top:40px;text-align:center}.cta a{display:inline-block;margin:10px;text-decoration:none}.cta button{background-color:#ff0000;color:#fff;border:none;padding:15px 25px;font-size:1.4em;border-radius:5px;cursor:pointer;transition:background-color 0.3s}.cta button:hover{background-color:#ff4444}footer{background-color:#000;color:#ff0000;text-align:center;padding:20px}.popup-container{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.7);justify-content:center;align-items:center;z-index:9999}.popup{background-color:#ff0000;padding:60px;border-radius:15px;max-width:80%;text-align:left;box-shadow:0px 0px 20px rgba(0,0,0,0.5)}.popup h3{color:#fff;font-size:3em;margin-top:0}.popup p{color:#fff;font-size:1.6em;line-height:2}.popup button{background-color:#fff;color:#ff0000;border:none;padding:15px 25px;font-size:1.6em;border-radius:5px;cursor:pointer;transition:background-color 0.3s}.popup button:hover{background-color:#ff4444}@keyframes icon-bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+</style>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img class="logo" src="huntr_logo_v2.png" alt="Huntr Logo">
+      <div class="logo-subtitle">ALL-IN-ONE SECURITY TESTING TOOL</div>
+    </div>
+  </header>
+
+  <div class="container" id="features">
+    <div class="features">
+      <div class="feature" id="recon-popup-trigger">
+        <i class="fas fa-search"></i>
+        <h2><strong>RECONNAISSANCE</strong></h2>
+      </div>
+      <div class="feature" id="forensics-popup-trigger">
+        <i class="fas fa-folder-open"></i>
+        <h2><strong>FORENSICS</strong></h2>
+      </div>
+      <div class="feature" id="offensive-popup-trigger">
+        <i class="fas fa-crosshairs"></i>
+        <h2><strong>OFFENSIVE</strong></h2>
+      </div>
+    </div>
+    <div class="cta">
+        <a href="https://github.com/andrehunt/huntr" target="_blank"><button>GITHUB</button></a>
+    </div>
+  </div>
+
+  <div class="popup-container" id="recon-popup">
+    <div class="popup">
+      <h3>RECONAISSANCE FEATURES</h3>
+      <p>
+        - PING SCAN<br>
+        - NMAP<br>
+        - EMAIL BREACH SCAN<br>
+        - THEHARVESTER<br>
+        - RECON-NG<br>
+        - WHOIS+<br>
+        - DIRECTORY BUSTER
+      </p>
+      <button id="close-recon-popup">Close</button>
+    </div>
+  </div>
+
+  <div class="popup-container" id="forensics-popup">
+    <div class="popup">
+      <h3>FORENSICS FEATURES</h3>
+      <p>
+        - HASH IDENTIFIER
+      </p>
+      <button id="close-forensics-popup">Close</button>
+    </div>
+  </div>
+
+  <div class="popup-container" id="offensive-popup">
+    <div class="popup">
+      <h3>OFFENSIVE FEATURES</h3>
+      <p>
+        - HASH CRACKER<br>
+        - GOPHISH<br>
+        - WEB BRUTE FORCERER
+      </p>
+      <button id="close-offensive-popup">Close</button>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('recon-popup-trigger').addEventListener('click', function() {
+      document.getElementById('recon-popup').style.display = 'flex';
+    });
+
+    document.getElementById('forensics-popup-trigger').addEventListener('click', function() {
+      document.getElementById('forensics-popup').style.display = 'flex';
+    });
+
+    document.getElementById('offensive-popup-trigger').addEventListener('click', function() {
+      document.getElementById('offensive-popup').style.display = 'flex';
+    });
+
+    document.getElementById('close-recon-popup').addEventListener('click', closePopup);
+    document.getElementById('close-forensics-popup').addEventListener('click', closePopup);
+    document.getElementById('close-offensive-popup').addEventListener('click', closePopup);
+    window.addEventListener('click', function(event) {
+      if (event.target.classList.contains('popup-container')) {
+        closePopup();
+      }
+    });
+
+    function closePopup() {
+      document.getElementById('recon-popup').style.display = 'none';
+      document.getElementById('forensics-popup').style.display = 'none';
+      document.getElementById('offensive-popup').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
